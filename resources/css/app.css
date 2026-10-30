@@ -1,0 +1,317 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Fraunces', ui-serif, Georgia, serif;
+    --color-ink: #0c4a6e;
+    --color-moss: #0369a1;
+    --color-moss-soft: #e0f2fe;
+    --color-clay: #0ea5e9;
+    --color-paper: #f0f9ff;
+    --duration-ui: 0.2s;
+    --ease-ui: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Sidebar shell */
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 0.6rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    color: rgb(255 255 255 / 0.72);
+    transition: background-color var(--duration-ui) var(--ease-ui), color var(--duration-ui) var(--ease-ui);
+}
+
+.sidebar-link:hover {
+    background: rgb(255 255 255 / 0.08);
+    color: #fff;
+}
+
+.sidebar-link[aria-current='page'] {
+    background: rgb(255 255 255 / 0.2);
+    color: #fff;
+    font-weight: 600;
+}
+
+.sidebar-link .dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 9999px;
+    background: currentColor;
+    opacity: 0.6;
+}
+
+.sidebar-link[aria-current='page'] .dot {
+    opacity: 1;
+}
+
+.paper-card {
+    border-radius: 1rem;
+    background: #fff;
+    border: 1px solid #e0ecf5;
+    box-shadow: 0 1px 2px rgb(29 42 36 / 0.04);
+}
+
+.display {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+}
+
+/* Shared form, table and button components */
+.field {
+    width: 100%;
+    border-radius: 0.6rem;
+    border: 1px solid #cfdde8;
+    background: #ffffff;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.9rem;
+    color: var(--color-ink);
+    outline: none;
+    transition: border-color var(--duration-ui) var(--ease-ui), box-shadow var(--duration-ui) var(--ease-ui);
+}
+
+.field:focus {
+    border-color: var(--color-moss);
+    box-shadow: 0 0 0 3px rgb(47 93 78 / 0.15);
+}
+
+.field:disabled {
+    opacity: 0.6;
+}
+
+.field[multiple] {
+    padding: 0.4rem;
+}
+
+.field[type='file'] {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+    color: #4b6478;
+}
+
+.field[type='file']::file-selector-button {
+    margin-right: 0.75rem;
+    border: 0;
+    border-radius: 0.45rem;
+    background: var(--color-moss-soft);
+    color: var(--color-moss);
+    padding: 0.35rem 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.lbl {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-ink);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    border-radius: 0.6rem;
+    background: var(--color-moss);
+    color: #fff;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background-color var(--duration-ui) var(--ease-ui), transform var(--duration-ui) var(--ease-ui);
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #075985;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--color-moss);
+    border: 1px solid #bae6fd;
+    transition: background-color var(--duration-ui) var(--ease-ui);
+}
+
+.btn-ghost:hover {
+    background: var(--color-moss-soft);
+}
+
+.btn-danger {
+    background: transparent;
+    color: #b4402a;
+    transition: background-color var(--duration-ui) var(--ease-ui);
+}
+
+.btn-danger:hover {
+    background: #fbe7e2;
+}
+
+.subnav-link {
+    border-radius: 9999px;
+    padding: 0.35rem 0.85rem;
+    color: var(--color-moss);
+    transition: background-color var(--duration-ui) var(--ease-ui), color var(--duration-ui) var(--ease-ui);
+}
+
+.subnav-link:hover {
+    background: #e0f2fe;
+    color: var(--color-ink);
+}
+
+.subnav-link[aria-current='page'] {
+    background: #0369a1;
+    color: #fff;
+}
+
+.link {
+    color: var(--color-moss);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color var(--duration-ui) var(--ease-ui);
+}
+
+.link:hover {
+    color: var(--color-ink);
+}
+
+.link-danger {
+    color: #b4321c;
+    transition: color var(--duration-ui) var(--ease-ui);
+}
+
+.link-danger:hover {
+    color: #8f2814;
+}
+
+/* Dashboard and module cards that link somewhere */
+.card-link {
+    display: block;
+    transition: transform var(--duration-ui) var(--ease-ui), box-shadow var(--duration-ui) var(--ease-ui);
+}
+
+.card-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -12px rgb(29 42 36 / 0.25);
+}
+
+/* Square icon button in the top bar */
+.icon-btn {
+    border: 1px solid #cfdde8;
+    background: #ffffff;
+    transition: background-color var(--duration-ui) var(--ease-ui);
+}
+
+.icon-btn:hover {
+    background: var(--color-moss-soft);
+}
+
+.tbl {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.tbl th {
+    text-align: left;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #5a7085;
+    padding: 0 0.75rem 0.6rem 0;
+}
+
+.tbl td {
+    padding: 0.7rem 0.75rem 0.7rem 0;
+    border-top: 1px solid #e6eef5;
+    vertical-align: middle;
+    transition: background-color var(--duration-ui) var(--ease-ui);
+}
+
+.tbl tr:hover td {
+    background: #f5faff;
+}
+
+.err {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #b4402a;
+}
+
+.page-lead {
+    margin-bottom: 1.5rem;
+    color: #4b6478;
+    font-size: 0.95rem;
+}
+
+.badge {
+    display: inline-block;
+    border-radius: 9999px;
+    background: var(--color-moss-soft);
+    color: var(--color-moss);
+    padding: 0.15rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.card-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+/* Sidebar open/closed behaviour: a drawer on mobile, collapsible on desktop */
+.app-sidebar {
+    transform: translateX(-100%);
+    transition: transform var(--duration-ui) var(--ease-ui);
+}
+
+[data-sidebar-open='true'] .app-sidebar {
+    transform: none;
+}
+
+.app-backdrop {
+    display: none;
+}
+
+[data-sidebar-open='true'] .app-backdrop {
+    display: block;
+}
+
+@media (min-width: 64rem) {
+    .app-backdrop {
+        display: none !important;
+    }
+
+    [data-sidebar-open='true'] .app-content {
+        margin-left: 16rem;
+    }
+
+    .app-content {
+        transition: margin-left var(--duration-ui) var(--ease-ui);
+    }
+}
+
+/* Respect the user's reduced-motion setting everywhere */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
